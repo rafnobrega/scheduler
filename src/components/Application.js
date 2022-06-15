@@ -36,10 +36,11 @@ const [day, setDay] = useState("Monday");
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
+
           <DayList
             days={days}
-            day={day}
-            setDay={setDay}
+            value={day}
+            onChange={setDay}
           />
         </nav>
         <img
