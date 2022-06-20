@@ -12,8 +12,6 @@ import "components/Application.scss";
 export default function Application(props) {
   
   function bookInterview(id, interview) {
-    console.log("Application-bookInterview:", id, interview);
-    
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -23,8 +21,20 @@ export default function Application(props) {
       [id]: appointment,
     };
     setState({ ...state, appointments });
-
     return axios.put(`/api/appointments/${id}`, appointment);
+  }
+
+  function deleteInterview(id, interview) {
+        const appointment = {
+          ...state.appointments[id],
+          interview: null,
+        };
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment,
+        };
+        setState({ ...state, appointments });
+        return axios.delete(`/api/appointments/${id}`, appointment);
   }
 
   const [state, setState] = useState({
@@ -38,7 +48,7 @@ export default function Application(props) {
 
   const appointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
-  console.log(interviewers);
+  // console.log(interviewers); 
 
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
@@ -51,6 +61,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        deleteInterview={deleteInterview}
       />
     );
   });
