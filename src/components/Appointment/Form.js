@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
-
-
 export default function Form(props) {
-  
   
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -14,6 +11,7 @@ export default function Form(props) {
     props.onSave(student, interviewer);
   }
 
+  
 
   const reset = () => {
     setStudent("");

@@ -20,8 +20,9 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };
-    setState({ ...state, appointments });
-    return axios.put(`/api/appointments/${id}`, appointment);
+    return axios.put(`/api/appointments/${id}`, appointment).then(() => {
+      setState({ ...state, appointments });
+    });
   }
 
   function deleteInterview(id, interview) {
@@ -33,9 +34,13 @@ export default function Application(props) {
           ...state.appointments,
           [id]: appointment,
         };
-        setState({ ...state, appointments });
-        return axios.delete(`/api/appointments/${id}`, appointment);
+        return axios.delete(`/api/appointments/${id}`).then(() => {
+          setState({ ...state, appointments });
+        });
   }
+
+
+  
 
   const [state, setState] = useState({
     day: "Monday",
