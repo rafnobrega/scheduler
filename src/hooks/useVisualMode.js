@@ -1,8 +1,8 @@
 import { useState } from "react";
 
+// This hook is used to manage the visual mode of the app:
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
-  // history === prev
   const [history, setHistory] = useState([initial]);
 
   function transition(newMode, replace = false) {

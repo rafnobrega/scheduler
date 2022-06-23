@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// Hook to get the application data:
 export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
@@ -30,7 +31,6 @@ export default function useApplicationData() {
   const updateSpots = function (state, appointments, id) {
     // find the day
     const dayObj = state.days.find((d) => d.name === state.day);
-
     // calc the spots using new appointments
     let spots = 0;
     for (const id of dayObj.appointments) {
@@ -39,15 +39,13 @@ export default function useApplicationData() {
         spots++;
       }
     }
-
     // update day & days
     const newDay = { ...dayObj, spots };
     const days = state.days.map((d) => (d.name === state.day ? newDay : d));
-
     // return an updated days array
     return days;
   };
-
+  
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -59,7 +57,7 @@ export default function useApplicationData() {
     };
     return axios.put(`/api/appointments/${id}`, appointment).then(() => {
       const days = updateSpots(state, appointments);
-      setState(prev => ({ ...state, appointments, days }));
+      setState((prev) => ({ ...state, appointments, days }));
     });
   }
 
@@ -75,7 +73,7 @@ export default function useApplicationData() {
 
     return axios.delete(`/api/appointments/${id}`).then(() => {
       const days = updateSpots(state, appointments);
-      setState(prev => ({ ...state, appointments, days }));
+      setState((prev) => ({ ...state, appointments, days }));
     });
   }
 

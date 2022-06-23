@@ -7,28 +7,27 @@ export default function Form(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+  // Validates if the form has invalid inputs (student name and interviewer):
   function validate() {
     if (student === "") {
       setError("Student name cannot be blank");
       return;
     }
-    // if (interviewer === null) {
-    //   setError("Please select an interviewer");
-    //   return;
-    // }
-    setError(""); 
+    if (interviewer === null) {
+      setError("Please select an interviewer");
+      return;
+    }
+    setError("");
     props.onSave(student, interviewer);
   }
 
-  // const save = () => {
-  //   props.onSave(student, interviewer);
-  // };
-
+  // Resets form (helper to cancel function):
   const reset = () => {
     setStudent("");
     setInterviewer(null);
   };
 
+  // Cancels the appointment:
   const cancel = () => {
     reset();
     props.onCancel();
@@ -46,7 +45,6 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             onChange={(event) => {
               setStudent(event.target.value);
-              // setError("");
             }}
             data-testid="student-name-input"
           />

@@ -6,20 +6,24 @@ import DayListItem from "components/DayListItem";
 
 afterEach(cleanup);
 
+// FIRST TEST:
 it("renders without crashing", () => {
   render(<DayListItem />);
 });
 
+// SECOND TEST:
 it("renders 'no spots remaining' when there are 0 spots", () => {
   const { getByText } = render(<DayListItem name="Monday" spots={0} />);
   expect(getByText("no spots remaining")).toBeInTheDocument();
 });
 
+// THIRD TEST:
 it("renders '1 spot remaining' when there is 1 spot", () => {
   const { getByText } = render(<DayListItem name="Monday" spots={1} />);
   expect(getByText("1 spot remaining")).toBeInTheDocument();
 });
 
+// FOURTH TEST:
 it("renders '2 spots remaining' when there are 2 spots", () => {
   const { getByText } = render(<DayListItem name="Monday" spots={2} />);
   expect(getByText("2 spots remaining")).toBeInTheDocument();

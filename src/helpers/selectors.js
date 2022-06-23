@@ -1,3 +1,5 @@
+// Selector helper functions:
+
 export function getAppointmentsForDay(state, day) {
   const dayList = state.days.filter((d) => d.name === day);
 
@@ -9,6 +11,7 @@ export function getAppointmentsForDay(state, day) {
   );
   return filteredList;
 }
+
 
 export function getInterview(state, interview) {
   if (!interview) return null;

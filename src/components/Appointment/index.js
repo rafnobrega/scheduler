@@ -9,6 +9,8 @@ import Status from "./Status";
 import Error from "./Error";
 import useVisualMode from "hooks/useVisualMode";
 
+
+// Modes variables:
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -19,13 +21,13 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
+
 export default function Appointment(props) {
   const edit = function () {
     transition(EDIT);
   };
 
-
-
+  // Saves the form (appointment) and transitions to the saving mode, then show mode:
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -38,6 +40,7 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE, true));
   }
 
+  // Deletes the appointment and transitions to the deleting and empty modes:
   function deleteInt(name, interviewer) {
     const interview = {
       student: name,
@@ -50,9 +53,9 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_DELETE, true));
   }
 
-    const { mode, transition, back } = useVisualMode(
-      props.interview ? SHOW : EMPTY
-    );
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  );
 
   return (
     <article className="appointment">
