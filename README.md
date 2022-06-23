@@ -11,26 +11,26 @@ Interview Scheduler is a responsive single-page application (SPA) build with Rea
 React, Webpack, Babel, Axios, Storybook, Jest, Cypress, Classnames.
 ```
 ## Final Product
-<p align="center">
 Create a new appointment:
+<p align="center">
   <img 
     src="https://raw.githubusercontent.com/rafnobrega/scheduler/master/docs/Create%20new%20appointment.gif"
   >
 </p>
-<p align="center">
 Delete an appointment:
+<p align="center">
   <img 
     src="https://raw.githubusercontent.com/rafnobrega/scheduler/master/docs/Delete%20an%20appointment.gif"
   >
 </p>
-<p align="center">
 Edit an appointment:
+<p align="center">
   <img 
     src="https://raw.githubusercontent.com/rafnobrega/scheduler/master/docs/Edit%20an%20appointment.gif"
   >
 </p>
-<p align="center">
 Form validations:
+<p align="center">
   <img 
     src="https://raw.githubusercontent.com/rafnobrega/scheduler/master/docs/Validations.gif"
   >
